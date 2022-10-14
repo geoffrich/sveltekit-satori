@@ -42,13 +42,10 @@
 </script>
 
 <div
-	style="background-color: {bg}; position: relative; max-width: {width}px; display: flex;"
+	style="background-color: {bg}; max-width: {width}px; display: flex;"
 	style:height={satori ? `${height}px` : undefined}
 >
-	<div
-		style="position: absolute; background-color: {bg}; width: 100%;"
-		style:display={satori ? 'flex' : 'grid'}
-	>
+	<div style="background-color: {bg}; width: 100%;" style:display={satori ? 'flex' : 'grid'}>
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" class:grid={!satori}>
 			{#each points as { x, y, color, size }}
 				<circle cx={x} cy={y} r={size} fill={color} />

@@ -1,4 +1,3 @@
-import randomWord from 'random-words';
 import { parseQuery } from '$lib/parse';
 
 /** @type {import('./$types').PageServerLoad} */
