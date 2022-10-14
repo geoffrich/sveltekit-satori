@@ -5,28 +5,19 @@ import { Resvg } from '@resvg/resvg-js';
 import { html as toReactNode } from 'satori-html';
 import Image from '../../lib/Dots.svelte';
 import { parseQuery } from '$lib/parse';
+import sourceSerifPro from '$lib/fonts/SourceSerifPro-Regular.ttf';
 
-// TODO: having trouble loading fonts
+// TODO: better way to load fonts? can they be imported?
 // https://vercel.com/docs/concepts/functions/edge-functions/og-image-examples#using-a-custom-font
-// next: integrate with https://github.com/natemoo-re/satori-html
-// const font = fetch('https://fonts.googleapis.com/css2?family=Noto+Sans&text=test', {
-// 	headers: {
-// 		'User-Agent':
-// 			'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; de-at) AppleWebKit/533.21.1 (KHTML, like Gecko) Version/5.0.5 Safari/533.21.1'
-// 	}
-// })
-// 	.then((res) => res.arrayBuffer())
-// 	.catch((e) => console.log(e));
 
 /** @type {Record<string, Buffer>} */
 const fontMemo = {};
 
 /**
- * @param {string} name
  * @returns {Promise<Buffer>}
  */
-async function getFont(name) {
-	const fontPath = join('.', 'static', name);
+async function getFont() {
+	const fontPath = join('.', sourceSerifPro);
 	if (fontMemo[fontPath]) {
 		return fontMemo[fontPath];
 	}
@@ -37,10 +28,11 @@ async function getFont(name) {
 
 /** @type {import('./$types').RequestHandler} */
 export const GET = async ({ url }) => {
+	console.log(sourceSerifPro);
 	const query = url.searchParams;
 	const { seed, width, height } = parseQuery(query);
 	const result = Image.render({ seed, width, height, satori: true });
-	const fontData = await getFont('SourceSerifPro-Regular.ttf');
+	const fontData = await getFont();
 	const markup = toReactNode(result.html);
 
 	const svg = await satori(markup, {
