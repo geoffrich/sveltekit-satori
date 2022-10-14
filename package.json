@@ -1,0 +1,33 @@
+{
+	"name": "sveltekit-og",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
+		"lint": "prettier --plugin-search-dir . --check .",
+		"format": "prettier --plugin-search-dir . --write ."
+	},
+	"devDependencies": {
+		"@resvg/resvg-js": "^2.1.0",
+		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/kit": "next",
+		"@vercel/og": "^0.0.15",
+		"nice-color-palettes": "^3.0.0",
+		"prettier": "^2.6.2",
+		"prettier-plugin-svelte": "^2.7.0",
+		"random-words": "^1.2.0",
+		"satori": "^0.0.38",
+		"satori-html": "^0.1.0",
+		"seedrandom": "^3.0.5",
+		"svelte": "^3.44.0",
+		"svelte-check": "^2.7.1",
+		"typescript": "^4.7.4",
+		"vite": "^3.1.0",
+		"vite-plugin-wasm": "^3.0.0"
+	},
+	"type": "module"
+}
