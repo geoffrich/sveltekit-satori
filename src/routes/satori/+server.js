@@ -14,9 +14,12 @@ import sourceSerifPro from '$lib/fonts/SourceSerifPro-Regular.ttf';
 const fontMemo = {};
 
 /**
- * @returns {Promise<Buffer>}
+ * @returns {Promise<Buffer | ArrayBuffer>}
  */
-async function getFont() {
+async function getFont(path) {
+	console.log(path);
+	return fetch(path).then((r) => r.arrayBuffer());
+
 	const fontPath = join('.', sourceSerifPro);
 	if (fontMemo[fontPath]) {
 		return fontMemo[fontPath];
@@ -28,11 +31,12 @@ async function getFont() {
 
 /** @type {import('./$types').RequestHandler} */
 export const GET = async ({ url }) => {
+	console.log(url.origin);
 	console.log(sourceSerifPro);
 	const query = url.searchParams;
 	const { seed, width, height } = parseQuery(query);
 	const result = Image.render({ seed, width, height, satori: true });
-	const fontData = await getFont();
+	const fontData = await getFont(`${url.origin}${sourceSerifPro}`);
 	const markup = toReactNode(result.html);
 
 	const svg = await satori(markup, {
