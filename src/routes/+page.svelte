@@ -43,9 +43,10 @@
 <button on:click={() => goto('/', { keepfocus: true, noscroll: true })}>New seed</button>
 
 <p>
-	Share this URL and the <a href="/satori?seed={data.seed}">social image</a> will be dynamically generated
-	from the Svelte component above. The SVG pattern is randomly generated using the word as a seed, so
-	the same word will produce the same pattern.
+	Share <a href={$page.url.toString()}>this URL</a> and the
+	<a href="/satori?seed={data.seed}">social image</a> will be dynamically generated from the Svelte component
+	above. The SVG pattern is randomly generated using the word as a seed, so the same word will produce
+	the same pattern.
 </p>
 
 <p>This uses:</p>
