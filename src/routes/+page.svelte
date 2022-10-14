@@ -15,7 +15,26 @@
 	$: browser && goto(`?seed=${data.seed}`, { replaceState: true, keepfocus: true, noscroll: true });
 
 	$: ({ width, height } = parseQuery($page.url.searchParams));
+
+	$: title = `Dynamic Svelte social image - "${data.seed}"`;
+	$: description = 'This card was generated from a Svelte component.';
 </script>
+
+<svelte:head>
+	<title>{title}</title><meta content="summary_large_image" name="twitter:card" /><meta
+		content="Dynamic Svelte social images"
+		property="og:site_name"
+	/><meta content={title} property="og:title" /><meta
+		content="https://sveltekit-satori.vercel.app"
+		property="og:url"
+	/><meta content={description} name="description" /><meta
+		content={description}
+		property="og:description"
+	/><meta
+		content="https://sveltekit-satori.vercel.app/satori?seed={data.seed}"
+		property="og:image"
+	/></svelte:head
+>
 
 <h1>Dynamic social images with Svelte</h1>
 {#key data.seed}
