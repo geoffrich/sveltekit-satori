@@ -3,9 +3,6 @@
 	import Image from '../lib/Dots.svelte';
 	import { parseQuery } from '$lib/parse';
 	import '../app.css';
-	// without this import, the asset won't be copied to the assets directory
-	// we actually need access on the server
-	import sourceSerifPro from '$lib/fonts/SourceSerifPro-Regular.ttf';
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
 
