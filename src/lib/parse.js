@@ -16,3 +16,7 @@ export function parseQuery(query) {
 	const height = query.get('h') ?? HEIGHT;
 	return { message, width: +width, height: +height, seed };
 }
+
+export function newWord() {
+	return randomWord();
+}

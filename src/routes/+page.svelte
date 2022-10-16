@@ -3,16 +3,10 @@
 	import Image from '../lib/Dots.svelte';
 	import { parseQuery } from '$lib/parse';
 	import '../app.css';
-	// without this import, the asset won't be copied to the assets directory
-	// we actually need access on the server
-	import sourceSerifPro from '$lib/fonts/SourceSerifPro-Regular.ttf';
 	import { goto } from '$app/navigation';
-	import { browser } from '$app/environment';
 
 	/** @type {import("./$types").PageData} */
 	export let data;
-
-	$: browser && goto(`?seed=${data.seed}`, { replaceState: true, keepfocus: true, noscroll: true });
 
 	$: ({ width, height } = parseQuery($page.url.searchParams));
 
@@ -40,8 +34,17 @@
 {#key data.seed}
 	<Image seed={data.seed} {width} {height} />
 {/key}
-<button on:click={() => goto('/', { keepfocus: true, noscroll: true })}>New seed</button>
-
+<form
+	action="/"
+	on:submit|preventDefault={(e) => {
+		const data = new FormData(e.target);
+		const searchParams = new URLSearchParams(data);
+		goto(`/?${searchParams.toString()}`, { keepfocus: true, noscroll: true });
+	}}
+>
+	<input type="hidden" name="seed" value={data.nextSeed} />
+	<button>New seed</button>
+</form>
 <p>
 	Share <a href={$page.url.toString()}>this URL</a> and the
 	<a href="/satori?seed={data.seed}">social image</a> will be dynamically generated from the Svelte component
