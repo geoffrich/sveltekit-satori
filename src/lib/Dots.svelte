@@ -52,14 +52,7 @@
 			{/each}
 		</svg>
 		<p
-			style="
-			z-index: 1; 
-			align-self: center; 
-			background-color: #868e9699; 
-			color: white; 
-			padding: 0.5em 1.5em; 
-			min-width: 100px; 
-			text-align: center;"
+			class="seed"
 			style:transform={satori ? `translateX(${width / 2}px) translateX(-50%);` : undefined}
 			style:position={satori ? 'absolute' : undefined}
 			style:font-size={satori ? '50px' : 'min(5vw, 50px)'}
@@ -76,5 +69,15 @@
 		align-self: center;
 		grid-column: 1;
 		grid-row: 1;
+	}
+
+	.seed {
+		z-index: 1;
+		align-self: center;
+		background-color: #868e9699;
+		color: white;
+		padding: 0.5em 1.5em;
+		min-width: 100px;
+		text-align: center;
 	}
 </style>

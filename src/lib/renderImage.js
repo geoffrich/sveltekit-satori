@@ -7,8 +7,7 @@ import sourceSerifPro from '$lib/fonts/SourceSerifPro-Regular.ttf';
 
 export async function componentToPng(component, props, height, width) {
 	const result = component.render(props);
-	const markup = toReactNode(result.html);
-
+	const markup = toReactNode(`${result.html}<style>${result.css.code}</style>`);
 	const svg = await satori(markup, {
 		fonts: [
 			{
