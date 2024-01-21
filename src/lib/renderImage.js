@@ -1,9 +1,10 @@
 import satori from 'satori';
 import { Resvg } from '@resvg/resvg-js';
 import { html as toReactNode } from 'satori-html';
+import { read } from '$app/server';
 
-// we use a Vite plugin to turn this import into the result of fs.readFileSync during build
 import sourceSerifPro from '$lib/fonts/SourceSerifPro-Regular.ttf';
+const fontData = read(sourceSerifPro).arrayBuffer();
 
 export async function componentToPng(component, props, height, width) {
 	const result = component.render(props);
@@ -12,7 +13,7 @@ export async function componentToPng(component, props, height, width) {
 		fonts: [
 			{
 				name: 'Source Serif Pro',
-				data: Buffer.from(sourceSerifPro),
+				data: await fontData,
 				style: 'normal'
 			}
 		],
