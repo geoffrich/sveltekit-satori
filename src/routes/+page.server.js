@@ -5,7 +5,7 @@ import { redirect } from '@sveltejs/kit';
 export const load = ({ url }) => {
 	const { seed } = parseQuery(url.searchParams);
 	if (!url.searchParams.has('seed')) {
-		throw redirect(302, `?seed=${seed}`);
+		redirect(302, `?seed=${seed}`);
 	}
 
 	let nextSeed = '';
