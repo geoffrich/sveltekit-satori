@@ -17,8 +17,8 @@ function y(t) {
 			o
 				? (n.push((65536 + ((o - 55296) << 10) + (e - 56320)).toString(16)), (o = 0))
 				: 55296 <= e && e <= 56319
-				? (o = e)
-				: n.push(e.toString(16));
+					? (o = e)
+					: n.push(e.toString(16));
 	return n.join('-');
 }
 var r = {

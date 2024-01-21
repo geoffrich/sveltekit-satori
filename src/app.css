@@ -4,8 +4,18 @@ html {
 	margin: auto;
 	line-height: 1.75;
 	font-size: 1.25em;
-	font-family: Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times,
-		Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+	font-family:
+		Iowan Old Style,
+		Apple Garamond,
+		Baskerville,
+		Times New Roman,
+		Droid Serif,
+		Times,
+		Source Serif Pro,
+		serif,
+		Apple Color Emoji,
+		Segoe UI Emoji,
+		Segoe UI Symbol;
 
 	--primary: #2e557c;
 	--highlight: #ba3f1d;
